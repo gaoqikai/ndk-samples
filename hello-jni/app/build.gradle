@@ -4,11 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    ndkVersion '22.1.7171670'
+    ndkVersion '21.4.7075529'
 
     defaultConfig {
         applicationId 'com.example.hellojni'
-        minSdkVersion 23
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -21,32 +21,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                     'proguard-rules.pro'
+            abiFilters = ["x86_64", "x86"]
         }
     }
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
-        }
-    }
-
-    flavorDimensions 'cpuArch'
-    productFlavors {
-        arm8 {
-            dimension 'cpuArch'
-            ndk {
-                abiFilters 'arm64-v8a', 'armeabi-v7a'
-            }
-        }
-        x86_64 {
-            dimension 'cpuArch'
-            ndk {
-                abiFilters 'x86_64', 'x86'
-            }
-        }
-        universal {
-            dimension 'cpuArch'
-            // include all default ABIs. with NDK-r16,  it is:
-            //   armeabi-v7a, arm64-v8a, x86, x86_64
         }
     }
 }

@@ -48,6 +48,9 @@ Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env, jobject thiz )
 #define ABI "x86"
 #elif defined(__x86_64__)
 #define ABI "x86_64"
+
+#elif defined(__x86__)
+#define ABI "x86"
 #elif defined(__mips64)  /* mips64el-* toolchain defines __mips__ too */
 #define ABI "mips64"
 #elif defined(__mips__)
